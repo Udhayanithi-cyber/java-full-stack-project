@@ -32,9 +32,10 @@
         <div class="card">
           <div class="card-body" >
           
+          <!-- th:action = "@{updateContact{cid} (cid=${contact.contactcid})}" -->
           <!-- "@{'/updateContact'+${contact.cid}}" -->
           
-  <form action = "/updateContact{${contact.cid}}" th:object="${contact}" method="post">
+  <form class= "updateform" th:action = "@{'/updateContactForm'+${contact.cid}}" th:object="${contact}" method="post">
                   
             
               <div class="form-group">
@@ -53,7 +54,7 @@
 				    <input type="text" name="name" th:value="${contact.name}"
 				    class="form-control " 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter name">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
 			    
@@ -62,9 +63,9 @@
               <div class="col-md-11">
                     <label for="validationServer03" class="form-label">Nick Name</label>
 				    <input type="text" name="secondName" th:value="${contact.secondName}"
-				    class="form-control " 
+				    class="form-control" 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter second name">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
 			  
@@ -75,7 +76,7 @@
 				    <input type="text" name="work" th:value="${contact.work}"
 				    class="form-control " 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter work">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
               
@@ -86,7 +87,7 @@
 				    <input type="text" name="email" th:value="${contact.email}"
 				    class="form-control " 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter email">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
             
@@ -97,7 +98,7 @@
 				    <input type="text" name="phone" th:value="${contact.phone}"
 				    class="form-control " 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter Phone">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
 			
@@ -111,22 +112,26 @@
 				    <input type="text" name="description" th:value="${contact.description}"
 				    class="form-control " 
 				    id="validationServer03" aria-describedby="validationServer03Feedback"
-				     required placeholder="Enter Id">
+				     required placeholder="Enter Description">
 				    <div id="validationServer03Feedback" class="invalid-feedback">
 			  </div></div></div>
 			  
 			  
-			  <div class="form-group"><div class="col-md-11">
+			  <!-- <div class="form-group"><div class="col-md-11">
 			    <label for="exampleFormControlFile1">Upload Photo</label>
 			    <input type="file" class="form-control-file" id="exampleFormControlFile1" 
 			    name="image">
-			  </div></div><br>
+			  </div></div><br> -->
 			  
 			   			
 		  	
 		  	
 			    </div><br>
 			  </div>
+			  <div class=" col-md-12 text-center">
+              <button  type="submit" class="sub btn btn-primary btn-lg " > Submit </button>
+         	  </div>
+         	</form> 
   
 			
 </section>			
@@ -150,10 +155,7 @@
 			 
 			 
 			  
-			  <div class=" col-md-12 text-center">
-              <button  type="submit" class="sub btn btn-primary btn-lg btn-block" > Submit </button>
-         	  </div>
-         	</form>  
+			   
          	
          </div>
           </div> </div> </div></div> </div>

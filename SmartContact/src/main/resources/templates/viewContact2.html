@@ -46,7 +46,7 @@
 			   <td th:text = "${contact.image}"></td> 
 			   
 			   <td>
-			   <a th:href="@{'/updateContact'+${session.userEmail}}"  class = "settings btn btn-secondary btn-sm mb-2"> Update</a>
+			   <a th:href="@{'/updateContact'+${contact.cid}}"  class = "settings btn btn-secondary btn-sm mb-2"> Update</a>
 			   <a th:href="@{'/deletecontact'+${contact.cid}}" class = "settings btn btn-secondary btn-sm mb-2"> Delete</a>
 			      </td>
 			   

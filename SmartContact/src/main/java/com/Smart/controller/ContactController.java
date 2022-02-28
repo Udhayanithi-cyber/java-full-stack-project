@@ -66,6 +66,8 @@ private ContactRepository contactRepository;
 	
 	//"@{'/Contact'+${session.userEmail}}"
 	/* @GetMapping("'/viewContact'+${session.userEmail}") */
+	
+	
 	@GetMapping("/viewContact")
 	public String viewContact2(Model model)
 	{
@@ -106,10 +108,12 @@ private ContactRepository contactRepository;
 	@GetMapping("/updateContact{cid}")
 	private String update(@PathVariable int cid, @ModelAttribute Contact contact, Model model,HttpSession session) 
 	{
-		model.addAttribute(model);
+		
 		session.setAttribute("contactid", cid);
 		Contact contactupdate  =contactService.findByContactId(cid);
 		
+		
+	    
 		if(contactupdate!=null)
 		{
 			model.addAttribute("contact",contactupdate);
@@ -120,5 +124,36 @@ private ContactRepository contactRepository;
 		}
 		return"updateContact";
 	}
+	
+	
+	@PostMapping("/updateContactForm{cid}")
+	private String updateform(@PathVariable int cid, @ModelAttribute Contact contact, Model model,HttpSession session) 
+	{
+		model.addAttribute(model);
+		session.setAttribute("contactid", cid);
+		Contact contactupdate  =contactService.findByContactId(cid);
+		
+		contactupdate.setCid(contact.getCid());
+		contactupdate.setName(contact.getName());
+		contactupdate.setSecondName(contact.getSecondName());
+		contactupdate.setEmail(contact.getEmail());
+		contactupdate.setPhone(contact.getPhone());
+		contactupdate.setWork(contact.getWork());
+		contactupdate.setDescription(contact.getDescription());
+		
+	    contactService.addContact(contactupdate);
+	    
+		if(contactupdate!=null)
+		{
+			model.addAttribute("contact",contactupdate);
+		}
+		else
+		{
+			model.addAttribute("contact",new Contact());
+		}
+		return"redirect:/viewContact";
+	}
+	
+	
 
 }
